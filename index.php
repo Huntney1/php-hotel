@@ -70,7 +70,7 @@
 
 </head>
 <body>
-<table class="table">
+<table class="table table-dark table-striped">
   <thead>
     <tr>
     <th scope="col">Nome</th>
@@ -90,6 +90,7 @@
         <td><?php echo $hotel['distance_to_center']; ?></td>
       </tr>
     <?php } ?>
+
   </tbody>
 </table>
 </body>
