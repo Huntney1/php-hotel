@@ -45,68 +45,28 @@
 
     ];
 
-     $filteredHotels = [];
+    $filteredHotels = [];
 
-if (isset($_GET['parking'])) {
-    $parking = $_GET['parking'];
-
-    if ($parking === 'yes' || $parking === 'no') {
-        $parking = ($parking === 'yes') ? true : false;
-        foreach ($hotels as $hotel) {
-            if ($hotel['parking'] === $parking) {
+    // Recupero i dati inviati dal form
+    $parking = isset($_GET['parking']) ? $_GET['parking'] : '';
+    $vote = isset($_GET['vote']) ? (int) $_GET['vote'] : '';
+    
+    // Filtra gli hotel
+    foreach ($hotels as $hotel) {
+        if (($parking == 'yes' && $hotel['parking'] == true) || ($parking == 'no' && $hotel['parking'] == false) || $parking == '') {
+            if ($vote == '' || $hotel['vote'] >= $vote) {
                 $filteredHotels[] = $hotel;
             }
         }
-    } else {
-        $error = 'Il valore inserito per il parcheggio non è valido';
     }
-} elseif (isset($_GET['vote'])) {
-    $vote = intval($_GET['vote']);
-
-    if ($vote >= 1 && $vote <= 5) {
-        foreach ($hotels as $hotel) {
-            if ($hotel['vote'] >= $vote) {
-                $filteredHotels[] = $hotel;
-            }
-        }
-    } else {
-        $error = 'Il valore inserito per la votazione non è valido';
+    
+    // Mostra gli hotel filtrati
+    foreach ($filteredHotels as $hotel) {
+        echo '<p>' . $hotel['name'] . '</p>';
+        echo '<p>' . $hotel['description'] . '</p>';
+        echo '<p>Parcheggio: ' . ($hotel['parking'] ? 'Sì' : 'No') . '</p>';
+        echo '<p>Votazione: ' . $hotel['vote'];
     }
-} else {
-    $filteredHotels = $hotels;
-} 
- 
-// Recupera i dati inviati dal form
-$parking = isset($_GET['parking']) ? $_GET['parking'] : '';
-$vote = isset($_GET['vote']) ? (int) $_GET['vote'] : '';
-
-// Filtra gli hotel
-$filteredHotels = [];
-foreach ($hotels as $hotel) {
-    if (($parking == 'yes' && $hotel['parking'] == true) || ($parking == 'no' && $hotel['parking'] == false) || $parking == '') {
-        if ($vote == '' || $hotel['vote'] >= $vote) {
-            $filteredHotels[] = $hotel;
-        }
-    }
-}
-
-// Mostra gli hotel filtrati
-foreach ($filteredHotels as $hotel) {
-    echo '<p>' . $hotel['name'] . '</p>';
-    echo '<p>' . $hotel['description'] . '</p>';
-    echo '<p>Parcheggio: ' . ($hotel['parking'] ? 'Sì' : 'No') . '</p>';
-    echo '<p>Votazione: ' . $hotel['vote'];
-}
-if (!empty($_GET['vote'])) {
-    $vote = (int) $_GET['vote'];
-    if ($vote >= 1 && $vote <= 5) {
-        $filteredHotels = array_filter($hotels, function($hotel) use ($vote) {
-            return $hotel['vote'] >= $vote;
-        });
-    } else {
-        echo 'Errore: la votazione deve essere compresa tra 1 e 5.';
-    }
-} 
 ?>
 
 
