@@ -95,36 +95,80 @@
 </head>
 <body>
 
-<form method="GET">
-    <div class="form-group">
-      <label for="parking">Parcheggio:</label>
-      <select name="parking" id="parking">
-        <option value="all">Tutti</option>
-        <option value="yes">Sì</option>
-        <option value="no">No</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="vote">Voto:</label>
-      <input type="number" name="vote" id="vote" min="1" max="5" step="1">
-    </div>
-    <div class="form-group">
-      <label for="name">Nome:</label>
-      <input type="text" name="name" id="name">
-    </div>
-    <button type="submit" class="btn btn-primary">Filtra</button>
-  </form>
-  <table class="table table-dark table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Nome</th>
-        <th scope="col">Descrizione</th>
-        <th scope="col">Parcheggio</th>
-        <th scope="col">Voto</th>
-        <th scope="col">Distanza dal centro</th>
-      </tr>
-    </thead>
-    <tbody>
+
+
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrizione</th>
+                <th scope="col">Parcheggio</th>
+                <th scope="col">Voto</th>
+                <th scope="col">Distanza dal centro</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td colspan="5">
+                <form method="GET">
+                    <div class="form-group">
+                        <label for="parking">Parcheggio:</label>
+                        <select name="parking" id="parking">
+                            <option value="tutti">Tutti</option>
+                            <option value="yes">Sì</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                    <td colspan="5">
+                        <div class="form-group">
+                            <label for="vote">Voto:</label>
+                            <input type="number" name="vote" id="vote" min="1" max="5" step="1" placeholder="1=>5">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div class="form-group">
+                            <label for="name">Nome:</label>
+                            <input type="text" name="name" id="name" placeholder="Search Hotel">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <button type="submit" class="btn btn-primary">Filtra</button>
+                    </td>
+                </tr>
+        </tbody>
+  
+    </table>
 
 </body>
-</html>
+</html>     
+        <!--        <form method="GET">
+        <div class="form-group">
+        <label for="parking">Parcheggio:</label>
+        <select name="parking" id="parking">
+            <option value="yes">Sì</option>
+            <option value="no">No</option>
+        </select>
+        </div>
+        <div class="form-group">
+        <label for="vote">Voto:</label>
+        <input type="number" name="vote" id="vote" min="1" max="5" step="1">
+        </div>
+        <div class="form-group">
+        <label for="name">Nome:</label>
+        <input type="text" name="name" id="name">
+        </div>
+        <button type="submit" class="btn btn-primary">Filtra</button>
+    </form> -->
+            
+     
+
+
