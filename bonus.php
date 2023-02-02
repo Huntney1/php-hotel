@@ -150,7 +150,7 @@
 
 </body>
 </html>     
-        <!--        <form method="GET">
+        <!--<form method="GET">
         <div class="form-group">
         <label for="parking">Parcheggio:</label>
         <select name="parking" id="parking">
